@@ -1,0 +1,15 @@
+{
+  "name": "A&J Plumbing & Solar",
+  "short_name": "A&J Solar",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f9f6",
+  "theme_color": "#172a42",
+  "icons": [
+    {
+      "src": "/assets/logo-mark-transparent.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

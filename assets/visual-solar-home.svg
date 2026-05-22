@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Solar home with water tank</title>
+  <desc id="desc">A warm photo-style generated visual of a modern home with roof solar panels and a water tank.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f4c75a"/>
+      <stop offset=".42" stop-color="#7fb2bd"/>
+      <stop offset="1" stop-color="#102a43"/>
+    </linearGradient>
+    <linearGradient id="wall" x1="0" x2="1">
+      <stop offset="0" stop-color="#d8c3a5"/>
+      <stop offset=".58" stop-color="#f3eadc"/>
+      <stop offset="1" stop-color="#a78163"/>
+    </linearGradient>
+    <linearGradient id="roof" x1="0" x2="1">
+      <stop offset="0" stop-color="#0e1f34"/>
+      <stop offset=".56" stop-color="#24384c"/>
+      <stop offset="1" stop-color="#091421"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#47688a"/>
+      <stop offset=".55" stop-color="#142a45"/>
+      <stop offset="1" stop-color="#071422"/>
+    </linearGradient>
+    <radialGradient id="sun" cx=".18" cy=".18" r=".55">
+      <stop offset="0" stop-color="#fff2b8" stop-opacity=".94"/>
+      <stop offset=".38" stop-color="#f3c63f" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#f3c63f" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values=".25"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 .08"/>
+      </feComponentTransfer>
+    </filter>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#071422" flood-opacity=".3"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <rect width="1600" height="900" fill="url(#sun)"/>
+  <g opacity=".32">
+    <path d="M0 542 C180 494 260 548 396 512 C540 474 640 464 772 518 C948 590 1072 502 1248 530 C1410 556 1494 524 1600 486 L1600 900 L0 900 Z" fill="#234d3f"/>
+    <path d="M0 600 C240 548 370 650 590 596 C760 555 970 600 1168 566 C1350 536 1486 590 1600 548 L1600 900 L0 900 Z" fill="#0f2e2c"/>
+  </g>
+  <g filter="url(#shadow)">
+    <path d="M326 514 L802 274 L1328 512 L1165 594 L486 594 Z" fill="url(#roof)"/>
+    <path d="M485 594 L1165 594 L1165 794 L485 794 Z" fill="url(#wall)"/>
+    <path d="M802 274 L1328 512 L1165 594 Z" fill="#13253a" opacity=".82"/>
+    <rect x="735" y="632" width="190" height="162" rx="8" fill="#12253b"/>
+    <rect x="962" y="636" width="134" height="106" rx="6" fill="#213f52"/>
+    <rect x="535" y="636" width="132" height="106" rx="6" fill="#20394a"/>
+    <path d="M340 503 L805 260 L1348 505" fill="none" stroke="#f3eadc" stroke-width="12" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(568 354) skewY(-22)" opacity=".95">
+    <rect x="0" y="0" width="148" height="126" fill="url(#panel)" stroke="#d9eff7" stroke-width="5"/>
+    <rect x="176" y="0" width="148" height="126" fill="url(#panel)" stroke="#d9eff7" stroke-width="4"/>
+    <rect x="352" y="0" width="148" height="126" fill="url(#panel)" stroke="#d9eff7" stroke-width="4"/>
+    <rect x="528" y="0" width="148" height="126" fill="url(#panel)" stroke="#d9eff7" stroke-width="4"/>
+    <g stroke="#9fbad1" stroke-width="2" opacity=".7">
+      <path d="M49 0 V126M98 0 V126M225 0 V126M274 0 V126M401 0 V126M450 0 V126M577 0 V126M626 0 V126"/>
+      <path d="M0 42 H676M0 84 H676"/>
+    </g>
+  </g>
+  <g transform="translate(206 594)" filter="url(#shadow)">
+    <ellipse cx="95" cy="20" rx="96" ry="30" fill="#46525a"/>
+    <rect x="0" y="20" width="190" height="210" fill="#202c35"/>
+    <ellipse cx="95" cy="230" rx="96" ry="30" fill="#111b24"/>
+    <g stroke="#596873" stroke-width="4" opacity=".7">
+      <path d="M0 62 H190M0 104 H190M0 146 H190M0 188 H190"/>
+    </g>
+    <path d="M190 130 H272 V93 H333" fill="none" stroke="#1e5b2f" stroke-width="16" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(1180 696)" opacity=".95">
+    <rect x="0" y="0" width="240" height="92" rx="18" fill="#f6f8f4"/>
+    <rect x="42" y="22" width="56" height="52" rx="7" fill="#13253a"/>
+    <rect x="122" y="22" width="56" height="52" rx="7" fill="#42a948"/>
+  </g>
+  <rect width="1600" height="900" filter="url(#grain)" opacity=".75"/>
+</svg>

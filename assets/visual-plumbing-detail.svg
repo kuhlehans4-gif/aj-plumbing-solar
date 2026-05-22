@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Plumbing pipe detail</title>
+  <desc id="desc">A photo-style generated visual of neat plumbing pipes under a bathroom basin.</desc>
+  <defs>
+    <linearGradient id="room" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f5fbff"/>
+      <stop offset=".44" stop-color="#d7e7eb"/>
+      <stop offset="1" stop-color="#657682"/>
+    </linearGradient>
+    <linearGradient id="cabinet" x1="0" x2="1">
+      <stop offset="0" stop-color="#0e1f34"/>
+      <stop offset=".55" stop-color="#172a42"/>
+      <stop offset="1" stop-color="#274f42"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" x2="1">
+      <stop offset="0" stop-color="#f9fbfb"/>
+      <stop offset=".3" stop-color="#8c969c"/>
+      <stop offset=".55" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#51606a"/>
+    </linearGradient>
+    <linearGradient id="copper" x1="0" x2="1">
+      <stop offset="0" stop-color="#6e2d16"/>
+      <stop offset=".36" stop-color="#d8894f"/>
+      <stop offset=".62" stop-color="#ffd0a3"/>
+      <stop offset="1" stop-color="#7c3118"/>
+    </linearGradient>
+    <filter id="softShadow">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#071422" flood-opacity=".28"/>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="2"/>
+      <feColorMatrix type="saturate" values=".22"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 .055"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+  <rect width="1400" height="1000" fill="url(#room)"/>
+  <circle cx="150" cy="142" r="210" fill="#f3c63f" opacity=".2"/>
+  <rect x="86" y="150" width="1228" height="696" rx="22" fill="url(#cabinet)" filter="url(#softShadow)"/>
+  <rect x="178" y="228" width="1050" height="520" rx="8" fill="#2a3439"/>
+  <rect x="0" y="0" width="1400" height="184" fill="#eef3f2"/>
+  <path d="M300 178 H1088 Q1130 178 1130 218 Q1130 274 1082 274 H322 Q270 274 270 220 Q270 178 300 178 Z" fill="#f6f9f9" filter="url(#softShadow)"/>
+  <g stroke-linecap="round" stroke-linejoin="round" filter="url(#softShadow)">
+    <path d="M266 478 H580 Q632 478 632 530 V650" fill="none" stroke="url(#copper)" stroke-width="38"/>
+    <path d="M826 476 H1085" fill="none" stroke="url(#copper)" stroke-width="38"/>
+    <path d="M574 476 H824" fill="none" stroke="#eef6f6" stroke-width="30"/>
+    <path d="M710 276 V384 Q710 430 664 430 H632" fill="none" stroke="url(#metal)" stroke-width="42"/>
+    <path d="M760 276 V654" fill="none" stroke="url(#metal)" stroke-width="42"/>
+    <path d="M632 650 Q632 716 696 716 H760 Q823 716 823 650" fill="none" stroke="url(#metal)" stroke-width="42"/>
+    <path d="M244 620 H1090" fill="none" stroke="#f3fbfb" stroke-width="26"/>
+  </g>
+  <g>
+    <circle cx="266" cy="478" r="42" fill="url(#metal)" stroke="#d9e3e4" stroke-width="6"/>
+    <circle cx="1085" cy="476" r="42" fill="url(#metal)" stroke="#d9e3e4" stroke-width="6"/>
+    <rect x="535" y="432" width="82" height="76" rx="10" fill="#b7843d"/>
+    <rect x="784" y="432" width="82" height="76" rx="10" fill="#b7843d"/>
+    <rect x="482" y="582" width="76" height="76" rx="10" fill="#b7843d"/>
+    <rect x="884" y="582" width="76" height="76" rx="10" fill="#b7843d"/>
+  </g>
+  <g opacity=".8">
+    <ellipse cx="390" cy="782" rx="80" ry="18" fill="#b7d9e5"/>
+    <ellipse cx="482" cy="806" rx="50" ry="12" fill="#b7d9e5"/>
+    <ellipse cx="564" cy="784" rx="28" ry="9" fill="#b7d9e5"/>
+  </g>
+  <g transform="translate(850 792) rotate(-13)" filter="url(#softShadow)">
+    <rect x="0" y="0" width="280" height="54" rx="20" fill="#182a3d"/>
+    <rect x="172" y="-24" width="130" height="98" rx="18" fill="url(#metal)"/>
+    <circle cx="238" cy="25" r="28" fill="#67747a"/>
+  </g>
+  <rect width="1400" height="1000" filter="url(#grain)"/>
+</svg>

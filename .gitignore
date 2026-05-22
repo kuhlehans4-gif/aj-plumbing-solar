@@ -1,0 +1,10 @@
+.env
+.env.local
+.vercel/
+node_modules/
+dist/
+.tmp/*
+!.tmp/.gitkeep
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

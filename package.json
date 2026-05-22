@@ -1,0 +1,14 @@
+{
+  "name": "aj-plumbing-solar",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Modern website for A&J Plumbing & Solar in Kroonstad, South Africa.",
+  "scripts": {
+    "build": "node tools/validate-site.mjs",
+    "check": "node tools/validate-site.mjs",
+    "start": "node tools/serve-static.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

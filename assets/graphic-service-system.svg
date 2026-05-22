@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 720" role="img" aria-labelledby="title desc">
+  <title id="title">Solar plumbing water system graphic</title>
+  <desc id="desc">A clean generated graphic showing solar, plumbing, power backup and water storage working together.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#102a43"/>
+      <stop offset="1" stop-color="#214f42"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" x2="1">
+      <stop offset="0" stop-color="#f3c63f"/>
+      <stop offset="1" stop-color="#ffd95c"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#071422" flood-opacity=".28"/>
+    </filter>
+  </defs>
+  <rect width="1000" height="720" rx="8" fill="url(#bg)"/>
+  <circle cx="790" cy="142" r="98" fill="url(#gold)" opacity=".92"/>
+  <g filter="url(#shadow)">
+    <path d="M170 370 L500 205 L840 370 L724 432 H286 Z" fill="#0e1f34"/>
+    <path d="M286 432 H724 V572 H286 Z" fill="#f2f6f0"/>
+    <rect x="352" y="450" width="86" height="122" rx="6" fill="#16324d"/>
+    <rect x="562" y="450" width="86" height="86" rx="6" fill="#284f42"/>
+    <path d="M178 370 L500 196 L850 370" fill="none" stroke="#e9f2ef" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(376 278) skewY(-22)">
+    <rect x="0" y="0" width="98" height="82" fill="#22466b" stroke="#d9eff7" stroke-width="4"/>
+    <rect x="120" y="0" width="98" height="82" fill="#22466b" stroke="#d9eff7" stroke-width="4"/>
+    <rect x="240" y="0" width="98" height="82" fill="#22466b" stroke="#d9eff7" stroke-width="4"/>
+    <path d="M32 0 V82M66 0 V82M153 0 V82M186 0 V82M273 0 V82M306 0 V82" stroke="#9eb9d0" stroke-width="2" opacity=".78"/>
+  </g>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M160 585 H375 V528 H438" fill="none" stroke="#42a948" stroke-width="20"/>
+    <path d="M668 512 H796 V442" fill="none" stroke="#42a948" stroke-width="18"/>
+    <path d="M210 610 C300 570 430 660 560 610 C680 565 760 600 830 560" fill="none" stroke="#f3c63f" stroke-width="16" opacity=".88"/>
+  </g>
+  <g transform="translate(78 492)" filter="url(#shadow)">
+    <ellipse cx="70" cy="18" rx="70" ry="20" fill="#60737c"/>
+    <rect x="0" y="18" width="140" height="126" fill="#1a2730"/>
+    <ellipse cx="70" cy="144" rx="70" ry="20" fill="#0e171f"/>
+    <path d="M0 58 H140M0 94 H140M0 130 H140" stroke="#60737c" stroke-width="4" opacity=".78"/>
+  </g>
+  <g transform="translate(746 468)" filter="url(#shadow)">
+    <rect x="0" y="0" width="138" height="92" rx="10" fill="#f4f8f5"/>
+    <rect x="24" y="22" width="38" height="48" rx="5" fill="#13253a"/>
+    <rect x="76" y="22" width="38" height="48" rx="5" fill="#42a948"/>
+  </g>
+</svg>

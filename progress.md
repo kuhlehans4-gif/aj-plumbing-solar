@@ -113,3 +113,4 @@ Current local review URL: `http://127.0.0.1:4173`
 2026-05-22: User shared Vercel deployment failure. Fixed the build setup by adding `tools/build-vercel.mjs`, updating `package.json` build script, ignoring generated `public/`, setting `vercel.json` `outputDirectory` to `public`, and making `tools/validate-site.mjs` root resolution more stable.
 2026-05-22: Verified the Vercel build-output fix locally through Node: validation passed, `public/` was generated, static pages/assets were copied, and `vercel.json` points at `public`.
 2026-05-22: Successfully resolved local Git index locks and ran `git add .`, committed the Vercel build-output changes, and successfully pushed the code to the GitHub remote main branch.
+2026-05-22: Fixed stretched mobile contact form radio buttons by migrating from direct input-element styling to a 100% cross-browser robust pseudo-element system, fully validating the site and pushing changes to GitHub.

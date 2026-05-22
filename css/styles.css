@@ -1221,9 +1221,8 @@ h3 {
   box-shadow: 0 0 0 4px rgba(66, 169, 72, 0.12);
 }
 
-.choice-card input {
-  appearance: none;
-  -webkit-appearance: none;
+.choice-card::before {
+  content: "";
   position: absolute;
   left: 0.95rem;
   top: 50%;
@@ -1233,16 +1232,28 @@ h3 {
   border: 2px solid #8a9490;
   border-radius: 50%;
   background: var(--white);
-  box-shadow: inset 0 0 0 4px var(--white);
+  box-shadow: none;
   transform: translateY(-50%);
+  transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+  box-sizing: border-box;
 }
 
-.choice-card input:checked {
+.choice-card input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  pointer-events: none;
+}
+
+.choice-card:has(input:checked)::before {
   border-color: var(--green-dark);
   background: var(--green-dark);
+  box-shadow: inset 0 0 0 3px var(--white);
 }
 
-.choice-card input:focus-visible {
+.choice-card:has(input:focus-visible)::before {
   outline: 3px solid rgba(66, 169, 72, 0.22);
   outline-offset: 2px;
 }
@@ -2014,7 +2025,7 @@ h3 {
     padding: 0.78rem 0.85rem 0.78rem 3.05rem;
   }
 
-  .choice-card input {
+  .choice-card::before {
     left: 0.95rem;
     width: 1.12rem;
     height: 1.12rem;

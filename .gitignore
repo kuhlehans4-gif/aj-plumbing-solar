@@ -3,6 +3,7 @@
 .vercel/
 node_modules/
 dist/
+public/
 .tmp/*
 !.tmp/.gitkeep
 npm-debug.log*

@@ -79,6 +79,7 @@ Initial website build, design/content refinement, image/contrast pass, and local
 - Home card HTML/CSS validation passed through the local Node environment after the section refinement.
 - Mobile refinement validation passed through the local Node environment: CSS braces, required files, page metadata, image references, and mobile CSS hooks all checked cleanly.
 - Contact API live delivery was not tested because the Web3Forms access key is not available yet.
+- Vercel build-output fix validation passed through the local Node environment: `tools/build-vercel.mjs` validates the site, creates `public/`, copies static pages/assets, and `vercel.json` now declares `outputDirectory: "public"`.
 
 ## Failed Or Blocked
 
@@ -89,6 +90,7 @@ Initial website build, design/content refinement, image/contrast pass, and local
 - GitHub repository target is not confirmed.
 - Web3Forms live access key is not available yet.
 - Vercel deployment has not been performed yet because the GitHub repository target and Web3Forms access key are still missing.
+- Pushing the Vercel build-output fix is blocked from this session because the GitHub connector still requires reauthentication and the local `.git` directory rejects lock-file creation with `Permission denied`.
 
 ## Next Step
 
@@ -107,3 +109,6 @@ Current local review URL: `http://127.0.0.1:4173`
 - 2026-05-22: User created `kuhlehans4-gif/aj-plumbing-solar`. Confirmed the repo exists and is uninitialized, but initial file creation failed with GitHub API 403 `Resource not accessible by integration`. The repo does not appear in the installed-repository search, so the GitHub app likely needs access to this newly created repository before Codex can push.
 - 2026-05-22: User reinstalled the GitHub plugin. Retested GitHub connector access; all GitHub actions returned `This app connection requires reauthentication before other actions on this app can succeed.` Push remains blocked until the connector is reauthenticated.
 - 2026-05-22: Resolved authentication blockages by utilizing local command execution on the user's system instead of the cloud connector. Initialized local Git repository, set default branch to `main`, staged all files, created the first local commit, added the remote origin pointing to `https://github.com/kuhlehans4-gif/aj-plumbing-solar.git`, and successfully ran `git push -u origin main`.
+2026-05-22: User shared Vercel deployment failure. Fixed the build setup by adding `tools/build-vercel.mjs`, updating `package.json` build script, ignoring generated `public/`, setting `vercel.json` `outputDirectory` to `public`, and making `tools/validate-site.mjs` root resolution more stable.
+2026-05-22: Verified the Vercel build-output fix locally through Node: validation passed, `public/` was generated, static pages/assets were copied, and `vercel.json` points at `public`.
+2026-05-22: Attempted to commit/push the fix through local Git. `git add` failed because `.git/index.lock` could not be created: `Permission denied`. GitHub connector push also remains blocked by reauthentication.

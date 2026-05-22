@@ -25,6 +25,8 @@ Push the finalized website code to GitHub and publish the site through the appro
 - Do not push before the user confirms the repository target.
 - Do not deploy with missing environment variables.
 - Vercel is selected by the user despite the documented Hobby/free commercial-use caveat.
+- The Vercel build must produce a `public/` output directory for static assets and pages.
+- Keep `api/` at the project root so Vercel can deploy the contact function separately from static output.
 - Do not commit secrets.
 - Verify build before deployment.
 - Confirm final payload reaches the intended destination before calling the project complete.
@@ -32,7 +34,7 @@ Push the finalized website code to GitHub and publish the site through the appro
 ## Tool Sequence
 
 1. Confirm repository and hosting provider.
-2. Build and test locally.
+2. Build and test locally; the build validates source files and copies deployable static files into `public/`.
 3. Commit approved code.
 4. Push to GitHub.
 5. Configure hosting.
@@ -51,6 +53,7 @@ Push the finalized website code to GitHub and publish the site through the appro
 
 - Missing repository permissions.
 - Build failure.
+- Missing `public/` output directory after the build.
 - Missing environment variables.
 - Domain/DNS misconfiguration.
 - Contact form delivery failure.
@@ -58,6 +61,7 @@ Push the finalized website code to GitHub and publish the site through the appro
 ## Test Expectations
 
 - Production build passes.
+- `public/` exists after `npm run build` and contains the static pages/assets.
 - Live URL loads.
 - Core pages and navigation work.
 - Contact form test path succeeds.

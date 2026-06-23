@@ -12,7 +12,6 @@ const requiredFiles = [
   "404.html",
   "css/styles.css",
   "js/main.js",
-  "api/contact.js",
   "robots.txt",
   "sitemap.xml",
   "vercel.json",
@@ -77,16 +76,17 @@ if (fs.existsSync(path.join(root, "index.html"))) {
   }
 }
 
-if (fs.existsSync(path.join(root, "api/contact.js"))) {
-  const contactApi = read("api/contact.js");
-  if (!contactApi.includes("CONTACT_FORM_TO_EMAIL")) errors.push("api/contact.js: missing CONTACT_FORM_TO_EMAIL env var check");
-  if (!contactApi.includes("formsubmit.co")) errors.push("api/contact.js: missing FormSubmit endpoint");
+for (const file of ["index.html", "contact.html"]) {
+  if (!fs.existsSync(path.join(root, file))) continue;
+  const html = read(file);
+  if (!html.includes("https://formsubmit.co/")) {
+    errors.push(`${file}: contact form must post to FormSubmit`);
+  }
 }
 
 const textFiles = [
   ...htmlFiles,
   "js/main.js",
-  "api/contact.js",
   "README.md",
   ".env.example"
 ].filter((file) => fs.existsSync(path.join(root, file)));

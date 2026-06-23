@@ -109,6 +109,20 @@ forms.forEach((form) => {
     const formData = new FormData(form);
     const payload = Object.fromEntries(formData.entries());
 
+    // Honeypot: silently accept and stop if the hidden field was filled (bot).
+    if ((payload._honey || "").trim()) {
+      form.reset();
+      setFormStatus(form, "Thank you. Your message has been sent.", "success");
+      return;
+    }
+
+    // FormSubmit must be called directly from the browser: its endpoint blocks
+    // server-side / datacenter requests. Derive the AJAX URL from the form action.
+    const endpoint = (form.action || "").replace(
+      "https://formsubmit.co/",
+      "https://formsubmit.co/ajax/"
+    );
+
     if (submitButton) {
       submitButton.disabled = true;
       submitButton.dataset.originalText = submitButton.textContent;
@@ -118,7 +132,7 @@ forms.forEach((form) => {
     setFormStatus(form, "Sending your message...", "pending");
 
     try {
-      const response = await fetch(form.action || "/api/contact", {
+      const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(payload)
@@ -126,15 +140,16 @@ forms.forEach((form) => {
 
       const result = await response.json().catch(() => ({}));
 
-      if (!response.ok || result.ok === false) {
-        const message = result.errors?.[0]?.message || "Something went wrong. Please call or email us directly.";
-        throw new Error(message);
+      if (result.success === "true" || result.success === true) {
+        form.reset();
+        setFormStatus(form, "Thank you. Your message has been sent.", "success");
+      } else if (result.message && /activat/i.test(result.message)) {
+        setFormStatus(form, "Almost done: please confirm the form via the activation email, then send again.", "error");
+      } else {
+        throw new Error("The message could not be sent. Please call or WhatsApp us instead.");
       }
-
-      form.reset();
-      setFormStatus(form, "Thank you. Your message has been sent.", "success");
     } catch (error) {
-      setFormStatus(form, error.message, "error");
+      setFormStatus(form, error.message || "The message could not be sent. Please call or WhatsApp us instead.", "error");
     } finally {
       if (submitButton) {
         submitButton.disabled = false;

@@ -49,6 +49,20 @@ function copyEntry(entry) {
   });
 }
 
+function injectContactEmail() {
+  const email = (process.env.CONTACT_FORM_TO_EMAIL || "info@ajplumbing.co.za").trim();
+  const pagesWithForm = ["index.html", "contact.html"];
+
+  for (const page of pagesWithForm) {
+    const target = path.join(publicDir, page);
+    if (!fs.existsSync(target)) continue;
+    const html = fs.readFileSync(target, "utf8").split("__CONTACT_FORM_EMAIL__").join(email);
+    fs.writeFileSync(target, html);
+  }
+
+  return email;
+}
+
 await validate();
 resetPublicDir();
 
@@ -56,11 +70,14 @@ for (const entry of staticEntries) {
   copyEntry(entry);
 }
 
+const contactEmail = injectContactEmail();
+
 console.log(JSON.stringify({
   ok: true,
   data: {
     output_directory: "public",
-    copied_entries: staticEntries
+    copied_entries: staticEntries,
+    contact_email_injected: Boolean(contactEmail)
   },
   errors: [],
   meta: {

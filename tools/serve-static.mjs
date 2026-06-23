@@ -39,19 +39,18 @@ function resolveRequest(url) {
 }
 
 const server = http.createServer((req, res) => {
-  if (req.url?.startsWith("/api/contact")) {
-    res.writeHead(503, { "Content-Type": "application/json; charset=utf-8" });
-    res.end(JSON.stringify({
-      ok: false,
-      errors: [{ type: "LocalServer", message: "Run on Vercel to test live contact delivery.", details: {} }]
-    }));
-    return;
-  }
-
   const file = resolveRequest(req.url || "/");
   const ext = path.extname(file);
   const status = path.basename(file) === "404.html" ? 404 : 200;
   res.writeHead(status, { "Content-Type": types[ext] || "application/octet-stream" });
+
+  if (ext === ".html") {
+    const email = (process.env.CONTACT_FORM_TO_EMAIL || "info@ajplumbing.co.za").trim();
+    const html = fs.readFileSync(file, "utf8").split("__CONTACT_FORM_EMAIL__").join(email);
+    res.end(html);
+    return;
+  }
+
   fs.createReadStream(file).pipe(res);
 });
 

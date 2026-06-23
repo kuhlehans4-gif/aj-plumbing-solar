@@ -332,7 +332,7 @@
               <span>A&J will call to clarify details</span>
               <span>Urgent issues are fastest by phone</span>
             </div>
-            <form class="contact-form" action="/api/contact" method="post" data-contact-form>
+            <form class="contact-form" action="https://formsubmit.co/__CONTACT_FORM_EMAIL__" method="post" data-contact-form>
               <div class="form-grid">
                 <div class="field field-full service-choice">
                   <span>What do you need help with?</span>
@@ -388,9 +388,12 @@
                   <textarea name="message" required minlength="10" placeholder="Briefly describe the issue, property type and preferred call-back time."></textarea>
                 </label>
               </div>
+              <input type="hidden" name="_subject" value="New website enquiry - AJ Plumbing and Solar">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
               <label class="bot-field" aria-hidden="true">
                 <span>Leave this field empty</span>
-                <input type="text" name="botcheck" tabindex="-1" autocomplete="off">
+                <input type="text" name="_honey" tabindex="-1" autocomplete="off">
               </label>
               <button class="button button-green" type="submit">Send enquiry</button>
               <p class="form-privacy">By submitting this form you allow A&amp;J Plumbing &amp; Solar to use your contact details to respond to your enquiry. See our <a href="/privacy">privacy policy</a>.</p>

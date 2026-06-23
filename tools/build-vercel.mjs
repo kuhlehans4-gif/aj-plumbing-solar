@@ -10,6 +10,7 @@ const staticEntries = [
   "solar.html",
   "plumbing.html",
   "contact.html",
+  "privacy.html",
   "404.html",
   "robots.txt",
   "sitemap.xml",

@@ -2135,3 +2135,88 @@ h3 {
     padding-inline: 0.5rem;
   }
 }
+
+/* Trust strip */
+.trust-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1.5rem 2.5rem;
+  padding: 1rem 0;
+}
+
+.trust-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.trust-item strong {
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.trust-item span {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* POPIA consent note below form submit */
+.form-privacy {
+  margin-top: 0.6rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.form-privacy a {
+  text-decoration: underline;
+}
+
+/* Footer legal impressum */
+.footer-legal {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 1rem var(--footer-padding, 1.5rem);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.6;
+  max-width: var(--max);
+  margin: 0 auto;
+  width: min(var(--max), calc(100% - 3rem));
+}
+
+.footer-legal a {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: underline;
+}
+
+/* Privacy / long-form content */
+.content-prose {
+  max-width: 720px;
+}
+
+.content-prose h2 {
+  margin-top: 2.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.content-prose ul {
+  padding-left: 1.5rem;
+  line-height: 1.9;
+}
+
+.content-prose p,
+.content-prose li {
+  line-height: 1.85;
+}
+
+/* Page hero without background image */
+.page-hero-plain {
+  background: var(--navy);
+  color: var(--white);
+  padding: clamp(4rem, 10vw, 7rem) var(--section-pad, 1.5rem);
+}
+
+.page-hero-plain .eyebrow {
+  color: var(--gold);
+}

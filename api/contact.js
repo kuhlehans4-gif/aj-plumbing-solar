@@ -62,35 +62,22 @@ function validate(data) {
   return errors;
 }
 
-function createWeb3FormsPayload(data) {
+function buildFormSubmitPayload(data) {
   const service = clean(data.service) || "General enquiry";
   const company = clean(data.company) || "Not provided";
   const email = clean(data.email);
 
-  const payload = {
-    access_key: process.env.WEB3FORMS_ACCESS_KEY,
-    subject: `New website enquiry - ${service}`,
-    from_name: "A&J Plumbing & Solar Website",
+  return {
+    _subject: `New website enquiry - ${service}`,
+    _template: "table",
+    _captcha: "false",
     name: clean(data.name),
     phone: clean(data.phone),
+    email: email || "not provided",
     service,
     company,
-    message: [
-      `Service interest: ${service}`,
-      `Company: ${company}`,
-      `Name: ${clean(data.name)}`,
-      `Email: ${email || "Not provided"}`,
-      `Phone: ${clean(data.phone)}`,
-      "",
-      clean(data.message)
-    ].join("\n")
+    message: clean(data.message)
   };
-
-  if (email) {
-    payload.email = email;
-  }
-
-  return payload;
 }
 
 module.exports = async function handler(req, res) {
@@ -107,14 +94,15 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  if (!process.env.WEB3FORMS_ACCESS_KEY) {
+  const toEmail = process.env.CONTACT_FORM_TO_EMAIL;
+  if (!toEmail) {
     return sendJson(res, 503, {
       ok: false,
       errors: [
         {
           type: "ConfigurationError",
           message: "The contact form is not configured yet. Please call or email A&J Plumbing & Solar directly.",
-          details: { missing: "WEB3FORMS_ACCESS_KEY" }
+          details: { missing: "CONTACT_FORM_TO_EMAIL" }
         }
       ]
     });
@@ -140,16 +128,16 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    const web3Payload = createWeb3FormsPayload(data);
-    const response = await fetch("https://api.web3forms.com/submit", {
+    const payload = buildFormSubmitPayload(data);
+    const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(toEmail)}`, {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify(web3Payload)
+      body: JSON.stringify(payload)
     });
 
     const result = await response.json().catch(() => ({}));
 
-    if (!response.ok || result.success === false) {
+    if (!response.ok || result.success !== "true") {
       return sendJson(res, 502, {
         ok: false,
         errors: [

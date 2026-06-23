@@ -79,8 +79,8 @@ if (fs.existsSync(path.join(root, "index.html"))) {
 
 if (fs.existsSync(path.join(root, "api/contact.js"))) {
   const contactApi = read("api/contact.js");
-  if (!contactApi.includes("WEB3FORMS_ACCESS_KEY")) errors.push("api/contact.js: missing Web3Forms env var check");
-  if (!contactApi.includes("https://api.web3forms.com/submit")) errors.push("api/contact.js: missing Web3Forms endpoint");
+  if (!contactApi.includes("CONTACT_FORM_TO_EMAIL")) errors.push("api/contact.js: missing CONTACT_FORM_TO_EMAIL env var check");
+  if (!contactApi.includes("formsubmit.co")) errors.push("api/contact.js: missing FormSubmit endpoint");
 }
 
 const textFiles = [

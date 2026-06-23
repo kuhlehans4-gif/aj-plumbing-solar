@@ -2195,6 +2195,16 @@ h3 {
   max-width: 720px;
 }
 
+.content-prose .prose-meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0;
+}
+
+.content-prose h2:first-of-type {
+  margin-top: 1.5rem;
+}
+
 .content-prose h2 {
   margin-top: 2.25rem;
   margin-bottom: 0.5rem;

@@ -128,10 +128,20 @@ module.exports = async function handler(req, res) {
       });
     }
 
+    const origin =
+      clean(req.headers.origin) ||
+      (req.headers.host ? `https://${req.headers.host}` : "https://ajplumbing.co.za");
+    const referer = clean(req.headers.referer) || `${origin}/contact`;
+
     const payload = buildFormSubmitPayload(data);
     const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(toEmail)}`, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Origin: origin,
+        Referer: referer
+      },
       body: JSON.stringify(payload)
     });
 

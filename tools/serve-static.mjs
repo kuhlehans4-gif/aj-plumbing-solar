@@ -44,10 +44,13 @@ const server = http.createServer((req, res) => {
   const status = path.basename(file) === "404.html" ? 404 : 200;
   res.writeHead(status, { "Content-Type": types[ext] || "application/octet-stream" });
 
-  if (ext === ".html") {
+  if (ext === ".html" || ext === ".xml" || ext === ".txt") {
     const email = (process.env.CONTACT_FORM_TO_EMAIL || "info@ajplumbing.co.za").trim();
-    const html = fs.readFileSync(file, "utf8").split("__CONTACT_FORM_EMAIL__").join(email);
-    res.end(html);
+    const siteUrl = (process.env.SITE_URL || `http://localhost:${port}`).replace(/\/$/, "");
+    const content = fs.readFileSync(file, "utf8")
+      .split("__CONTACT_FORM_EMAIL__").join(email)
+      .split("__SITE_URL__").join(siteUrl);
+    res.end(content);
     return;
   }
 

@@ -63,6 +63,20 @@ function injectContactEmail() {
   return email;
 }
 
+function injectSiteUrl() {
+  const siteUrl = (process.env.SITE_URL || "https://ajplumbing.co.za").replace(/\/$/, "").trim();
+  const files = ["sitemap.xml", "robots.txt", "index.html", "solar.html", "plumbing.html", "contact.html", "privacy.html"];
+
+  for (const file of files) {
+    const target = path.join(publicDir, file);
+    if (!fs.existsSync(target)) continue;
+    const content = fs.readFileSync(target, "utf8").split("__SITE_URL__").join(siteUrl);
+    fs.writeFileSync(target, content);
+  }
+
+  return siteUrl;
+}
+
 await validate();
 resetPublicDir();
 
@@ -71,13 +85,15 @@ for (const entry of staticEntries) {
 }
 
 const contactEmail = injectContactEmail();
+const siteUrl = injectSiteUrl();
 
 console.log(JSON.stringify({
   ok: true,
   data: {
     output_directory: "public",
     copied_entries: staticEntries,
-    contact_email_injected: Boolean(contactEmail)
+    contact_email_injected: Boolean(contactEmail),
+    site_url_injected: siteUrl
   },
   errors: [],
   meta: {
